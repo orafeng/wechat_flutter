@@ -9,12 +9,14 @@ import 'package:wechat_flutter/pages/root/root_page.dart';
 import 'package:wechat_flutter/provider/global_model.dart';
 import 'package:wechat_flutter/tools/wechat_flutter.dart';
 
+import 'pages/login/login_page.dart';
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = Provider.of<GlobalModel>(context)..setContext(context);
 
-    return new MaterialApp(
+    return MaterialApp(
       navigatorKey: navGK,
       title: model.appName,
       theme: ThemeData(
@@ -34,7 +36,7 @@ class MyApp extends StatelessWidget {
       locale: model.currentLocale,
       routes: {
         '/': (context) {
-          return model.goToLogin ? new LoginBeginPage() : new RootPage();
+          return model.goToLogin ? LoginBeginPage() : RootPage();
         }
       },
     );

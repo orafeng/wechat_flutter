@@ -62,10 +62,30 @@ void updateApi(BuildContext context) async {
   );
 }
 
+/// 上传头像 [getImgCode]
+getImgCode(BuildContext context, reqMap, Callback callback) async {
+   Req.getInstance().post(
+    API.gatewayUrl, "/base/imgCode",
+        (v) {
+      print('errorCode::${v['errorCode']}');
+      print('message::${v['message']}');
+      if (v['errorCode'] == '00000') {
+        callback(v['data']);
+      } else {
+        callback(null);
+      }
+    },
+    params: reqMap,
+    errorCallBack: (String msg, int code) {
+      showToast(context, msg);
+    },
+  );
+}
+
 /// 上传头像 [uploadImg]
 uploadImgApi(BuildContext context, base64Img, Callback callback) async {
   Req.getInstance().post(
-    API.uploadImg,
+    API.uploadImg, "hello",
     (v) {
       print('code::${v['code']}');
       print('URL::${v['result']['URL']}');

@@ -1,5 +1,6 @@
 import 'package:provider/provider.dart';
 import 'package:wechat_flutter/pages/login/login_begin_page.dart';
+import 'package:wechat_flutter/pages/login/login_page.dart';
 import 'package:wechat_flutter/pages/root/root_page.dart';
 import 'package:wechat_flutter/provider/global_model.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ Future<void> init(BuildContext context) async {
   }
 }
 
-Future<void> login(String userName, BuildContext context) async {
+Future<void> login(String userName, String passWord, BuildContext context) async {
   final model = Provider.of<GlobalModel>(context, listen: false);
 
   try {
@@ -27,7 +28,7 @@ Future<void> login(String userName, BuildContext context) async {
       await SharedUtil.instance.saveString(Keys.account, userName);
       await SharedUtil.instance.saveBoolean(Keys.hasLogged, true);
       model.refresh();
-      await routePushAndRemove(new RootPage());
+      await routePushAndRemove(RootPage());
     } else {
       print('error::' + result.toString());
     }
@@ -42,18 +43,18 @@ Future<void> loginOut(BuildContext context) async {
   try {
     var result = await im.imLogout();
     if (result.toString().contains('ucc')) {
-      showToast(context, '登出成功');
+      showToast(context, '退出成功');
     } else {
       print('error::' + result.toString());
     }
     model.goToLogin = true;
     model.refresh();
     await SharedUtil.instance.saveBoolean(Keys.hasLogged, false);
-    await routePushAndRemove(new LoginBeginPage());
+    await routePushAndRemove(LoginPage());
   } on PlatformException {
     model.goToLogin = true;
     model.refresh();
     await SharedUtil.instance.saveBoolean(Keys.hasLogged, false);
-    await routePushAndRemove(new LoginBeginPage());
+    await routePushAndRemove(LoginPage());
   }
 }

@@ -41,7 +41,7 @@ class Req {
   void get(
     String url,
     OnData callBack, {
-    Map<String, String> params,
+    Map params,
     OnError errorCallBack,
     CancelToken token,
   }) async {
@@ -58,13 +58,14 @@ class Req {
   //post请求
   void post(
     String url,
+    String route,
     OnData callBack, {
-    Map<String, String> params,
+    Map params,
     OnError errorCallBack,
     CancelToken token,
   }) async {
     this._request(
-      url,
+      url + route,
       callBack,
       method: RequestType.POST,
       params: params,
@@ -97,7 +98,7 @@ class Req {
     String url,
     OnData callBack, {
     RequestType method,
-    Map<String, String> params,
+    Map params,
     FormData formData,
     OnError errorCallBack,
     ProgressCallback progressCallBack,

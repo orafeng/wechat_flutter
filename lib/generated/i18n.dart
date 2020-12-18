@@ -34,6 +34,7 @@ class S implements WidgetsLocalizations {
   String get language => "Language";
   String get languageTitle => "Change Language";
   String get login => "Login";
+  String get rlogin => "rLogin";
   String get macao => "Macao";
   String get me => "Me";
   String get mobileNumberLogin => "Mobile number login";
@@ -88,6 +89,8 @@ class $zh_CN extends S {
   String get language => "语言";
   @override
   String get login => "登录";
+  @override
+  String get rlogin => "欢迎登录";
   @override
   String get selectCountry => "选择国家或地区";
   @override
@@ -149,7 +152,7 @@ class $zh_CN extends S {
   @override
   String get contacts => "通讯录";
   @override
-  String get register => "注册";
+  String get register => "快速注册";
 }
 
 class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {

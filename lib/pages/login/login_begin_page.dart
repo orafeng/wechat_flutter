@@ -12,47 +12,47 @@ import 'login_page.dart';
 
 class LoginBeginPage extends StatefulWidget {
   @override
-  _LoginBeginPageState createState() => new _LoginBeginPageState();
+  _LoginBeginPageState createState() =>  _LoginBeginPageState();
 }
 
 class _LoginBeginPageState extends State<LoginBeginPage> {
   Widget body(GlobalModel model) {
     var buttons = [
-      new ComMomButton(
+       ComMomButton(
         text: S.of(context).login,
         margin: EdgeInsets.only(left: 10.0),
         width: 100.0,
         onTap: () => routePush(
-            ProviderConfig.getInstance().getLoginPage(new LoginPage())),
+            ProviderConfig.getInstance().getLoginPage( LoginPage())),
       ),
-      new ComMomButton(
+       ComMomButton(
           text: S.of(context).register,
           color: bgColor,
           style:
               TextStyle(fontSize: 15.0, color: Color.fromRGBO(8, 191, 98, 1.0)),
           margin: EdgeInsets.only(right: 10.0),
           onTap: () => routePush(
-              ProviderConfig.getInstance().getLoginPage(new RegisterPage())),
+              ProviderConfig.getInstance().getLoginPage( RegisterPage())),
           width: 100.0),
     ];
 
-    return new Column(
+    return  Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        new Container(
+         Container(
           alignment: Alignment.topRight,
-          child: new InkWell(
-            child: new Padding(
+          child:  InkWell(
+            child:  Padding(
               padding: EdgeInsets.all(10.0),
-              child: new Text(S.of(context).language,
+              child:  Text(S.of(context).language,
                   style: TextStyle(color: Colors.white)),
             ),
-            onTap: () => routePush(new LanguagePage()),
+            onTap: () => routePush( LanguagePage()),
           ),
         ),
-        new Row(
+         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: buttons,
+          // children: buttons,
         )
       ],
     );
@@ -68,7 +68,7 @@ class _LoginBeginPageState extends State<LoginBeginPage> {
   Widget build(BuildContext context) {
     final model = Provider.of<GlobalModel>(context);
 
-    var bodyMain = new Container(
+    var bodyMain = Container(
       decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/bsc.webp'), fit: BoxFit.cover)),
@@ -76,6 +76,6 @@ class _LoginBeginPageState extends State<LoginBeginPage> {
       child: body(model),
     );
 
-    return new Scaffold(body: bodyMain);
+    return  Scaffold(body: bodyMain);
   }
 }

@@ -11,7 +11,7 @@ class GlobalModel extends ChangeNotifier {
 
   ///app的名字
   String appName = "微信flutter";
-
+  String area = '中国大陆（+86）';
   /// 用户信息
   String account = '';
   String nickName = 'nickName';

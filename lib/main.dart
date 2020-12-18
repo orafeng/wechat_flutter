@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:wechat_flutter/config/provider_config.dart';
-import 'package:wechat_flutter/app.dart';
+import 'package:wechat_flutter/app1.dart';
 import 'package:wechat_flutter/tools/data/data.dart';
 
 import 'config/storage_manager.dart';
@@ -18,12 +18,12 @@ void main() async {
   await StorageManager.init();
 
   /// APP入口并配置Provider
-  runApp(ProviderConfig.getInstance().getGlobal(MyApp()));
+  runApp(ProviderConfig.getInstance().getGlobal(MyApp1()));
 
   /// 自定义报错页面
   ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails) {
     debugPrint(flutterErrorDetails.toString());
-    return new Center(child: new Text("App错误，快去反馈给作者!"));
+    return Center(child: Text("App错误，快去反馈给作者!"));
   };
 
   /// Android状态栏透明

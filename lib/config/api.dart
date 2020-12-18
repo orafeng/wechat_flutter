@@ -5,4 +5,5 @@ class API {
   static const upImg = "http://111.230.251.115/oldchen/fUser/oneDaySuggestion";
   static const update = 'http://www.flutterj.com/api/update.json';
   static const uploadImg = 'http://www.flutterj.com/upload/avatar';
+  static const gatewayUrl = 'http://10.0.2.2:9518';
 }
